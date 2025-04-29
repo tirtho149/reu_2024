@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio showcasing my 2024 REU experience at the Translational AI Center, Iowa State University.">
+    <meta name="keywords" content="REU, Translational AI, Iowa State University, AI research, portfolio">
+    <meta name="author" content="Tirtho Roy">
+    <meta property="og:title" content="REU 2024 Portfolio - Translational AI Center">
+    <meta property="og:description" content="Explore my summer research experience at TrAC, Iowa State University.">
+    <meta property="og:image" content="photos/1.jpeg">
+    <meta property="og:url" content="https://your-website.com">
     <title>My REU Experience at Translational AI Center</title>
     <style>
         /* Global Styles */
@@ -84,11 +91,15 @@
         .gallery-item {
             min-width: 100%;
             height: 400px;
-            background-size: cover;
-            background-position: center;
-            background-color: #ddd; /* Placeholder color */
             display: flex;
             align-items: flex-end;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
         
         .caption {
@@ -96,6 +107,7 @@
             color: white;
             width: 100%;
             padding: 15px;
+            font-size: 1rem;
         }
         
         .gallery-controls {
@@ -119,6 +131,11 @@
         
         .gallery-controls button:hover {
             background: rgba(255,255,255,0.9);
+        }
+        
+        .gallery-controls .toggle-auto {
+            font-size: 1.2rem;
+            padding: 10px 20px;
         }
         
         .gallery-dots {
@@ -156,17 +173,28 @@
             width: 100%;
             max-width: 800px;
             height: 600px;
-            background-color: #ddd; /* Placeholder color */
             margin: 20px auto;
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
         }
         
+        .poster-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
         .poster-caption {
             margin-top: 20px;
-            font-style: italic;
-            color: #555;
+            color: #333;
+        }
+        
+        /* LinkedIn Section */
+        .linkedin-container iframe {
+            width: 100%;
+            height: 60vh;
+            max-height: 700px;
         }
         
         /* Footer */
@@ -204,6 +232,10 @@
             .poster-img {
                 height: 400px;
             }
+            
+            .linkedin-container iframe {
+                height: 50vh;
+            }
         }
     </style>
 </head>
@@ -218,13 +250,13 @@
     <div class="container">
         <section class="about">
             <h2>Research Experience Overview</h2>
-            <p>During Summer 2024, I participated in the Research Experiences for Undergraduates (REU) program as a Research Intern at the <a href="https://trac-ai.iastate.edu/" target="_blank">Translational AI Center (TrAC)</a> at Iowa State University. </p>
+            <p>During Summer 2024, I participated in the Research Experiences for Undergraduates (REU) program as a Research Intern at the <a href="https://trac-ai.iastate.edu/" target="_blank">Translational AI Center (TrAC)</a> at Iowa State University.</p>
             
             <h3>Program Components:</h3>
             <ul style="list-style-type: disc; margin-left: 25px; margin-bottom: 20px;">
                 <li>Intensive "Deep Dive Into AI Boot Camp" (June 4-7, 2024)</li>
                 <li>Weekly REU seminars featuring speakers from academia</li>
-                <li>Got chance to vist TrAC industry partner John Deere and Corteva </li>
+                <li>Visited TrAC industry partners John Deere and Corteva</li>
                 <li>Collaborative research with TrAC faculty and graduate students</li>
                 <li>Development of an AI-driven sales pitch and customer insight generator utilizing Large Language Models</li>
                 <li>Final presentation at the university-wide REU Research Symposium</li>
@@ -236,18 +268,15 @@
         <section>
             <h2>Photo Gallery</h2>
             <div class="photo-gallery">
-                <div class="gallery-container" id="gallery-container">
-                    <!-- Photos will be dynamically loaded here -->
-                </div>
+                <div class="gallery-container" id="gallery-container"></div>
                 <div class="gallery-controls">
-                    <button id="prev-btn">&lt;</button>
-                    <button id="next-btn">&gt;</button>
+                    <button id="prev-btn" aria-label="Previous slide">&lt;</button>
+                    <button id="toggle-auto" class="toggle-auto" aria-label="Toggle auto-advance">⏯</button>
+                    <button id="next-btn" aria-label="Next slide">&gt;</button>
                 </div>
-                <div class="gallery-dots" id="gallery-dots">
-                    <!-- Dots will be dynamically added here -->
-                </div>
+                <div class="gallery-dots" id="gallery-dots"></div>
             </div>
-            <div style="text-align: center; margin-top: 15px; font-style: italic; color: #555;">
+            <div style="text-align: center; margin-top: 15px; color: #333;">
                 Research activities and presentations during the REU program at Iowa State University
             </div>
         </section>
@@ -256,7 +285,7 @@
             <h2>Research Project</h2>
             <div class="poster-container">
                 <div class="poster-img" id="poster-img">
-                    <!-- Poster will be dynamically loaded here -->
+                    <img src="poster/poster.jpg" alt="AI-driven Sales Pitch and Customer Insight Generator Poster" loading="lazy">
                 </div>
                 <div class="poster-caption">
                     <h3>AI-driven Sales Pitch and Customer Insight Generator</h3>
@@ -277,12 +306,14 @@
             <div class="linkedin-container" style="max-width: 1050px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
                     <div style="flex-basis: 504px;">
-                        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7216929840359215104?collapsed=1" height="670" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
-                        <p style="text-align: center; margin-top: 15px; font-style: italic;">Research project recognition</p>
+                        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7216929840359215104?collapsed=1" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+                        <p style="text-align: center; margin-top: 15px; color: #333;">Research project recognition</p>
+                        <p style="text-align: center;"><a href="https://www.linkedin.com/posts/tirtho-roy-apon_reu2024-activity-7216929840359215104" target="_blank">View post on LinkedIn</a></p>
                     </div>
                     <div style="flex-basis: 504px;">
-                        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7224900049074372609?collapsed=1" height="636" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
-                        <p style="text-align: center; margin-top: 15px; font-style: italic;">REU Research Symposium poster presentation</p>
+                        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7224900049074372609?collapsed=1" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+                        <p style="text-align: center; margin-top: 15px; color: #333;">REU Research Symposium poster presentation</p>
+                        <p style="text-align: center;"><a href="https://www.linkedin.com/posts/tirtho-roy-apon_reu2024-activity-7224900049074372609" target="_blank">View post on LinkedIn</a></p>
                     </div>
                 </div>
             </div>
@@ -291,7 +322,7 @@
     
     <footer>
         <div class="container">
-            <p>&copy; 2025 | Professional Portfolio</p>
+            <p>© 2025 | Professional Portfolio</p>
             <p>Connect: 
                 <a href="https://github.com/tirtho149" target="_blank">GitHub</a> | 
                 <a href="https://www.linkedin.com/in/tirtho-roy-apon/" target="_blank">LinkedIn</a>
@@ -301,121 +332,103 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Configuration - Update these paths to match your directory structure
-            const photoDirectory = 'photos/'; // Directory where your photos are stored
-            const posterDirectory = 'poster/'; // Directory where your poster is stored
-            
-            // Sample photo data - Replace with your actual photo information
+        document.addEventListener('DOMContentLoaded', () => {
+            // Configuration
+            const photoDirectory = 'photos/';
+            const posterDirectory = 'poster/';
             const photos = [
-                { 
-                    filename: '1.jpeg', 
-                    caption: 'REU peers' 
-                },
-                { 
-                    filename: '2.jpeg', 
-                    caption: 'REU peers' 
-                },
-                { 
-                    filename: '3.jpeg', 
-                    caption: 'REU peers' 
-                },
-                { 
-                    filename: '4.jpeg', 
-                    caption: 'REU peers' 
-                },
-                { 
-                    filename: '5.jpeg', 
-                    caption: 'REU peers' 
-                }
+                { filename: '1.jpeg', caption: 'Collaborating with REU peers', alt: 'REU group collaboration' },
+                { filename: '2.jpeg', caption: 'AI Boot Camp session', alt: 'Deep Dive Into AI Boot Camp' },
+                { filename: '3.jpeg', caption: 'Visiting John Deere', alt: 'Industry visit to John Deere' },
+                { filename: '4.jpeg', caption: 'REU seminar', alt: 'Weekly REU seminar' },
+                { filename: '5.jpeg', caption: 'Research symposium preparation', alt: 'Preparing for REU Research Symposium' },
+                { filename: '6.jpeg', caption: 'Presenting at the symposium', alt: 'Presenting at REU Research Symposium' }
             ];
-            
-            // Poster information - Replace with your actual poster filename
-            const poster = {
-                filename: 'poster.jpg',
-                title: 'AI-driven Sales Pitch and Customer Insight Generator'
-            };
-            
-            // Initialize photo gallery
+
+            // Gallery elements
             const galleryContainer = document.getElementById('gallery-container');
             const galleryDots = document.getElementById('gallery-dots');
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
+            const toggleAutoBtn = document.getElementById('toggle-auto');
             let currentIndex = 0;
-            
+            let isAutoPlaying = true;
+            let galleryInterval = setInterval(nextSlide, 5000);
+
             // Load photos into gallery
             photos.forEach((photo, index) => {
-                // Create gallery item
                 const galleryItem = document.createElement('div');
                 galleryItem.className = 'gallery-item';
-                
-                // Use placeholder image for now, in production this would be:
-                // galleryItem.style.backgroundImage = `url(${photoDirectory}${photo.filename})`;
-                galleryItem.style.backgroundImage = `url(/api/placeholder/800/400)`;
-                
-                // Add caption
+                const img = new Image();
+                img.src = `${photoDirectory}${photo.filename}`;
+                img.alt = photo.alt;
+                img.loading = 'lazy';
+                img.onerror = () => {
+                    img.src = 'photos/fallback.jpg'; // Ensure you have a fallback image
+                    console.error(`Failed to load image: ${photo.filename}`);
+                };
+                galleryItem.appendChild(img);
                 const caption = document.createElement('div');
                 caption.className = 'caption';
                 caption.textContent = photo.caption;
                 galleryItem.appendChild(caption);
-                
-                // Add to gallery
                 galleryContainer.appendChild(galleryItem);
-                
-                // Add dot indicator
+
                 const dot = document.createElement('span');
                 dot.className = index === 0 ? 'dot active' : 'dot';
-                dot.addEventListener('click', () => {
-                    goToSlide(index);
-                });
+                dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+                dot.addEventListener('click', () => goToSlide(index));
                 galleryDots.appendChild(dot);
             });
-            
-            // Load poster
-            const posterImg = document.getElementById('poster-img');
-            // In production this would be:
-            // posterImg.style.backgroundImage = `url(${posterDirectory}${poster.filename})`;
-            posterImg.style.backgroundImage = `url(/api/placeholder/800/600)`;
-            
+
             // Gallery navigation functions
             function updateGallery() {
                 galleryContainer.style.transform = `translateX(${-currentIndex * 100}%)`;
-                
-                // Update dots
                 document.querySelectorAll('.dot').forEach((dot, index) => {
                     dot.classList.toggle('active', index === currentIndex);
                 });
             }
-            
+
             function goToSlide(index) {
                 currentIndex = index;
                 updateGallery();
             }
-            
+
             function nextSlide() {
                 currentIndex = (currentIndex + 1) % photos.length;
                 updateGallery();
             }
-            
+
             function prevSlide() {
                 currentIndex = (currentIndex - 1 + photos.length) % photos.length;
                 updateGallery();
             }
-            
-            // Add event listeners for gallery navigation
+
+            // Event listeners
             nextBtn.addEventListener('click', nextSlide);
             prevBtn.addEventListener('click', prevSlide);
-            
-            // Auto-advance gallery every 5 seconds
-            let galleryInterval = setInterval(nextSlide, 5000);
-            
-            // Pause auto-advance when hovering over gallery
-            document.querySelector('.photo-gallery').addEventListener('mouseenter', () => {
-                clearInterval(galleryInterval);
+            toggleAutoBtn.addEventListener('click', () => {
+                isAutoPlaying = !isAutoPlaying;
+                toggleAutoBtn.textContent = isAutoPlaying ? '⏯' : '▶';
+                toggleAutoBtn.setAttribute('aria-label', isAutoPlaying ? 'Pause auto-advance' : 'Play auto-advance');
+                if (isAutoPlaying) {
+                    galleryInterval = setInterval(nextSlide, 5000);
+                } else {
+                    clearInterval(galleryInterval);
+                }
             });
-            
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') prevSlide();
+                if (e.key === 'ArrowRight') nextSlide();
+            });
+
+            document.querySelector('.photo-gallery').addEventListener('mouseenter', () => {
+                if (isAutoPlaying) clearInterval(galleryInterval);
+            });
+
             document.querySelector('.photo-gallery').addEventListener('mouseleave', () => {
-                galleryInterval = setInterval(nextSlide, 5000);
+                if (isAutoPlaying) galleryInterval = setInterval(nextSlide, 5000);
             });
         });
     </script>
